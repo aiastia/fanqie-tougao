@@ -1,6 +1,6 @@
 {
   "name": "fanqie-tougao",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "番茄小说投稿助手：读取本地书籍信息与长篇稿件，自动拆分章节，通过浏览器自动化在番茄作家后台创建新书并存草稿/发布章节",
   "author": {
     "name": "aiastia"

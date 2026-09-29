@@ -1,0 +1,16 @@
+{
+  "name": "aiastia-zcode-plugins",
+  "owner": { "name": "aiastia" },
+  "plugins": [
+    {
+      "name": "fanqie-tougao",
+      "source": "./fanqie-tougao",
+      "version": "0.4.0",
+      "description": "番茄小说投稿助手：建书（固定字段+标签固定值库+读者向简介）与发章节（扫描+拆章+存草稿）两阶段，浏览器自动化",
+      "displayName": "Fanqie Submit Helper",
+      "displayName_i18n": { "zh-CN": "番茄投稿助手" },
+      "description_i18n": { "zh-CN": "番茄小说投稿助手：建书（固定字段+标签固定值库+读者向简介）与发章节（扫描+拆章+存草稿）两阶段，浏览器自动化" },
+      "category": "productivity"
+    }
+  ]
+}

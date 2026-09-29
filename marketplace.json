@@ -7,7 +7,7 @@
     {
       "name": "fanqie-tougao",
       "source": "./fanqie-tougao",
-      "version": "0.6.0",
+      "version": "0.6.1",
       "description": "番茄投稿：建书三步直通；发章节交接番茄发文助手扩展；扫描修库独立任务",
       "displayName": "Fanqie Submit Helper",
       "displayName_i18n": {

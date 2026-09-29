@@ -40,7 +40,7 @@
 
 标签面板是 React 组件，点击交互有明确的坑，按下面顺序做：
 
-1. **打开弹层**：必须用真实鼠标事件（agent-browser 的 click 命令）点标签输入框；JS `el.click()` 打不开弹层。
+1. **打开弹层**：必须用真实鼠标事件（agent-browser 的 click 命令）点标签输入框；JS `el.click()` 打不开弹层。**开完立刻把真实光标挪到中性区**：`agent-browser --cdp 9222 hover 'input[placeholder*="搜索标签"]'`——面板是在光标当前位置下方渲染的，开面板后光标会压在首行第一颗芯片上触发悬浮提示，遮挡芯片、干扰人工核对（2026-09-29 P150 实测、用户目视确认的 bug）。脚本合成事件点选不受悬浮影响，此步纯为视觉可核对性。
 2. **弃用 `@eXX` ref**：面板每点一下就重渲染，snapshot 拿的 ref 立刻失效（报 `Could not locate element`），还可能误点关闭面板。点芯片一律用 JS 按文本定位。
 3. **点芯片的正确姿势**：按标签文本找**最内层** `.category-choose-item-title` 元素（同名多节点取最后一个），在其上派发完整指针事件序列 `pointerdown→mousedown→pointerup→mouseup→click`，事件带 `clientX/clientY`（从 `getBoundingClientRect()` 中心取）。**不要派发到外层 `.category-choose-item`**——实测只有部分分组留存（主分类/情节上了，主题/角色静默丢失）。
 4. **一次只点一个，间隔 1~1.5 秒**：React 状态异步提交，连续批量点会丢标签；点完立刻查选中态拿到的也可能是旧状态（实测"当场查=未选中、1秒后查=已选中"）。节奏：点击 → sleep 1.2s → 验证该芯片选中态 → 丢了补点 → 下一个。

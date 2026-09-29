@@ -7,7 +7,7 @@
     {
       "name": "fanqie-tougao",
       "source": "./fanqie-tougao",
-      "version": "0.5.1",
+      "version": "0.5.2",
       "description": "番茄投稿：建书三步直通（本地定稿→开网页填表→确认创建），发章节（拆章+存草稿），扫描修库为独立任务需明确要求",
       "displayName": "Fanqie Submit Helper",
       "displayName_i18n": {

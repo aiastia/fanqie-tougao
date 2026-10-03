@@ -7,14 +7,14 @@
     {
       "name": "fanqie-tougao",
       "source": "./fanqie-tougao",
-      "version": "0.6.2",
-      "description": "番茄投稿：建书三步直通；发章节默认定时(当天起每天2章)交接发文助手扩展；扫描修库独立任务",
+      "version": "0.7.0",
+      "description": "网文投稿全家桶：番茄建书/发章（浏览器自动化）、番茄+书旗双平台建书、蛙蛙投稿批量流水线、LOFTER长篇连载/短篇单发",
       "displayName": "Fanqie Submit Helper",
       "displayName_i18n": {
         "zh-CN": "番茄投稿助手"
       },
       "description_i18n": {
-        "zh-CN": "番茄投稿：建书三步直通；发章节默认定时(当天起每天2章)交接发文助手扩展；扫描修库独立任务"
+        "zh-CN": "网文投稿全家桶：番茄建书三步直通+定时发章交接发文助手扩展+扫描修库；番茄+书旗双平台建书；蛙蛙投稿批量流水线；LOFTER长篇连载与短篇单发"
       },
       "category": "productivity"
     }

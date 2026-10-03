@@ -1,6 +1,22 @@
 # 番茄投稿助手 (fanqie-tougao)
 
-一个 [ZCode](https://zcode.ai) 插件：把本地或线上写作平台的书稿发上**番茄小说**（fanqienovel.com）。
+一个 [ZCode](https://zcode.ai) 插件，现为**网文投稿全家桶**，内置 5 个技能覆盖投稿全链路：
+
+| 技能 | 用途 |
+|---|---|
+| `fanqie-tougao` | 番茄建书三步直通；定时发章交接发文助手扩展；扫描修库 |
+| `platform-book-create` | 番茄 + 书旗**双平台建书**（材料收集+填表+传封面，从墨鱼项目到书卡一条龙） |
+| `wawa-submit` | 蛙蛙写作投稿：首投/更新推送的**批量脚本化流水线**（备料→体检→封包→注入） |
+| `lofter-publish` | LOFTER 长篇连载发章（排版与已发章节一致） |
+| `lofter-short-publish` | LOFTER 短篇单发（文字帖 + 回礼/赠礼解锁后段） |
+
+以下为打头的番茄技能详述，其余技能各看其 `skills/<名字>/SKILL.md`。
+
+---
+
+## fanqie-tougao：把书稿发上番茄小说
+
+把本地或线上写作平台的书稿发上**番茄小说**（fanqienovel.com）。
 通过浏览器自动化（CDP）操作你**已登录的日常 Chrome**，不逆向任何接口、不碰番茄的 API 风控。
 
 ## 它做什么
@@ -62,17 +78,35 @@
 - 标签面板是 React 组件且状态异步提交，技能内置了实测踩坑换来的点选 playbook（弹层打开、元素定位、事件序列、逐个验证），换自动化工具时参考 `skills/fanqie-tougao/references/fanqie-create-flow.md`
 - 需要本机有 Chrome + 浏览器自动化通道（如 Chrome DevTools 调试端口）与可用的浏览器控制技能
 
+## 环境依赖（非番茄技能）
+
+- `wawa-submit`：需要墨鱼（moyu）写作系统 MCP 工具 + 蛙蛙后台浏览器登录态；脚本纯 Python 标准库
+- `platform-book-create`：依赖 `browser-cdp` 技能准备 Chrome 调试口
+- `lofter-publish` / `lofter-short-publish`：需要 LOFTER 登录态的浏览器自动化通道
+
 ## 目录结构
 
 ```
 ├── marketplace.json          # ZCode 插件市场清单（发行入口）
 └── fanqie-tougao/
     ├── .zcode-plugin/plugin.json
-    └── skills/fanqie-tougao/
-        ├── SKILL.md                      # 技能主体（两阶段工作流）
-        ├── references/fanqie-create-flow.md   # 番茄创建页真实表单规格 + 封面上传流程 + 标签点选 playbook
-        ├── references/fanqie-tags.md          # 标签全量固定值库 + 选标策略与实例
-        └── scripts/split_chapters.py          # 长文档拆章脚本（纯标准库）
+    └── skills/
+        ├── fanqie-tougao/
+        │   ├── SKILL.md                      # 番茄：建书 + 发章 + 修库（两阶段工作流）
+        │   ├── references/fanqie-create-flow.md   # 番茄创建页真实表单规格 + 封面上传流程 + 标签点选 playbook
+        │   ├── references/fanqie-tags.md          # 标签全量固定值库 + 选标策略与实例
+        │   └── scripts/split_chapters.py          # 长文档拆章脚本（纯标准库）
+        ├── platform-book-create/
+        │   ├── SKILL.md                      # 番茄+书旗双平台建书一条龙
+        │   └── references/shuqi-tags.md      # 书旗标签固定值库
+        ├── wawa-submit/
+        │   ├── SKILL.md                      # 蛙蛙投稿批量流水线（首投/更新/换封三任务线）
+        │   ├── prepare_batch.py              # 备料总脚本（盘点/下载/补丁/体检/封包）
+        │   ├── import_draft.py               # 注入执行器
+        │   ├── prep_covers.py                # 换封备料
+        │   └── labels.json                   # 蛙蛙标签全量固化表
+        ├── lofter-publish/SKILL.md           # LOFTER 长篇连载发章
+        └── lofter-short-publish/SKILL.md     # LOFTER 短篇单发+回礼
 ```
 
 ## License
